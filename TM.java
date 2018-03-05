@@ -11,46 +11,45 @@ public class TM{
       String command;
       LocalDateTime t;
       try{
-         command = args[0];
-         switch(command){
-            case "Start": t = LocalDateTime.now();
+         switch(args[0]){
+            case "start": t = LocalDateTime.now();
                           if(args.length == 2){
-                               log.writeLine((t + "\t" + args[1] + "\tStart"), "TM.log");
+                               log.writeLine((t + "\t" + args[1] + "\tstart"), "TM.log");
                           }
                           else{
                               this.usage();
                           }
                           break;
-            case "Stop": t = LocalDateTime.now();
+            case "stop": t = LocalDateTime.now();
                          if(args.length == 2){
-                              log.writeLine((t + "\t" + args[1] + "\tStop"),"TM.log");
+                              log.writeLine((t + "\t" + args[1] + "\tstop"),"TM.log");
                          }
                          else{
                              this.usage();
                          }
                          break;
-             case "Describe": t = LocalDateTime.now();
+             case "describe": t = LocalDateTime.now();
                               if(args.length == 3){
-                                 log.writeLine((t + "\t" + args[1] + "\tDescribe\t" + args[2]),"TM.log");
+                                 log.writeLine((t + "\t" + args[1] + "\tdescribe\t" + args[2]),"TM.log");
                               }
                               else if(args.length == 4){
-                                 log.writeLine((t + "\t" + args[1] + "\tDescribe\t" + args[2] + "\t" + args[3]),"TM.log");
+                                 log.writeLine((t + "\t" + args[1] + "\tdescribe\t" + args[2] + "\t" + args[3]),"TM.log");
                               }
                               else{
                                  this.usage();
                               }
                               break;
-             case "Size": t = LocalDateTime.now();
+             case "size": t = LocalDateTime.now();
                           if(args.length == 3){
-                              log.writeLine((t + "\t" + args[1] + "\tSize\t" + args[2]),"TM.log");
+                              log.writeLine((t + "\t" + args[1] + "\tsize\t" + args[2]),"TM.log");
                           }
                           else{
                               this.usage();
                           }
                           break;
-             case "Summary": t = LocalDateTime.now();
+             case "summary": t = LocalDateTime.now();
                              tasks = log.read("TM.log", tasks);
-                             System.out.println("\t     Summary\n\t_________________");
+                             System.out.println("\t     summary\n\t_________________");
                              if(args.length == 2){
                                  for(Task tsk: tasks){
                                     if((tsk.name).equals(args[1])){
@@ -75,6 +74,9 @@ public class TM{
          this.usage();
       }
    }
+//   public boolean logCommand(String... cmd){
+//      
+//   }
 //////////////////////////////////////////////////////////////////////////////
    public static void main(String[]args){
       TM tm = new TM();
@@ -82,15 +84,15 @@ public class TM{
    }
    public void usage(){
       System.out.println("Please use the following format for commands:\n\n" +
-                         "java TM Start <task name>\n" +
-                         "java TM Stop <task name>\n" +
-                         "java TM Describe <task name> <description in quotation marks>\n" +
-                         "java TM Describe <task name> <description in quotation marks> <size>\n" +
-                         "java TM Size <task name> <size>\n" +
-                         "java TM Rename <old task name> <new task name that isn't in TM.log>\n" +
-                         "java TM Delete <task name>\n" +
-                         "java TM Summary <task name>\n" +
-                         "java TM Summary\n" +
+                         "java TM start <task name>\n" +
+                         "java TM stop <task name>\n" +
+                         "java TM describe <task name> <description in quotation marks>\n" +
+                         "java TM describe <task name> <description in quotation marks> <size(Ex:S, M, L, XL)>\n" +
+                         "java TM size <task name> <size(Ex:S, M, L, XL)>\n" +
+                         "java TM rename <old task name> <new task name that isn't in TM.log>\n" +
+                         "java TM delete <task name>\n" +
+                         "java TM summary <task name>\n" +
+                         "java TM summary\n" +
                          "Log is named TM.log");
    }
 //////////////////////////////////////////////////////////////////////////////
